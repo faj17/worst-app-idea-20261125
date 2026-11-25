@@ -12,12 +12,22 @@ punctuation) and writes it to /output/entry.txt.
 from pathlib import Path
 
 # The pitch itself: one sentence, exactly 218 characters.
-PITCH = (
+# Built from two fragments so the setup and the punchline are each
+# visible on their own: the product + what it does, then who it is for.
+SETUP = (
     "DustWatch is a $10-a-month app that live-streams the dust settling "
     "on your bookshelves in 4K, alerts you the instant a single new "
-    "particle lands, and sends a weekly dust report so serious "
-    "collectors never miss a speck."
+    "particle lands, and sends a weekly dust report "
 )
+PUNCH = "so serious collectors never miss a speck."
+
+
+def assemble() -> str:
+    """Join the fragments into the single-sentence pitch."""
+    return SETUP + PUNCH
+
+
+PITCH = assemble()
 
 OUTPUT_DIR = Path("/output")
 OUTPUT_FILE = OUTPUT_DIR / "entry.txt"
